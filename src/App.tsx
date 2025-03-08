@@ -1,4 +1,4 @@
-function App() {
+export function App() {
   return (
     <>
       <p>Lets start Coffee Delivery app</p>
