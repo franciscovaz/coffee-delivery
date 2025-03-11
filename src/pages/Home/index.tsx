@@ -1,6 +1,8 @@
 import { useTheme } from 'styled-components'
-import { Heading, MainInfo, MainInfoContent, Info } from './styles'
+import { Heading, MainInfo, MainInfoContent, Info, CoffeeList } from './styles'
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
+import { coffees } from '../../../mock-data.json'
+import { CoffeeCard } from '../../components/CoffeeCard'
 
 export function Home() {
   const theme = useTheme()
@@ -68,7 +70,13 @@ export function Home() {
         <img src="/images/info-bg.svg" id="info-bg" alt="" />
       </MainInfo>
 
-      {/* TODO Add coffee list */}
+      <CoffeeList>
+        <h2>Our Coffees</h2>
+
+        <div>
+          {coffees && coffees.map((coffee) => <CoffeeCard key={coffee.id} />)}
+        </div>
+      </CoffeeList>
     </div>
   )
 }
