@@ -1,4 +1,5 @@
 import { ShoppingCart } from 'phosphor-react'
+
 import {
   Container,
   CoffeeImg,
@@ -10,6 +11,8 @@ import {
   Order,
 } from './styles'
 import { useTheme } from 'styled-components'
+import { QuantityInput } from '../Form/QuantityInput'
+import { useState } from 'react'
 
 type CoffeeCardProps = {
   coffee: {
@@ -23,10 +26,24 @@ type CoffeeCardProps = {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const [quantity, setQuantity] = useState(1)
+  const [isItemAdded, setIsItemAdded] = useState(false)
+
   const theme = useTheme()
+
+  function incrementQuantity() {
+    setQuantity((state) => state + 1)
+  }
+
+  function decrementQuantity() {
+    if (quantity > 1) {
+      setQuantity((state) => state - 1)
+    }
+  }
 
   function handleAddItem() {
     console.log('Add item to cart')
+    setIsItemAdded(true)
   }
 
   return (
@@ -49,8 +66,13 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
           <span>{coffee.price.toFixed(2)}</span>
         </Price>
 
-        <Order>
-          <button onClick={handleAddItem}>
+        <Order $itemAdded={isItemAdded}>
+          <QuantityInput
+            quantity={quantity}
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+          />
+          <button disabled={isItemAdded} onClick={handleAddItem}>
             <ShoppingCart size={22} color={theme['base-card']} />
           </button>
         </Order>
