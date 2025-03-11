@@ -4,7 +4,7 @@ import { mixins } from '../../styles/mixins'
 export const MainInfo = styled.section`
   position: relative;
 
-  img#hero-bg {
+  img#info-bg {
     position: absolute;
     top: 0;
     left: 0;
