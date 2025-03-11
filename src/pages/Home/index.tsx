@@ -74,7 +74,10 @@ export function Home() {
         <h2>Our Coffees</h2>
 
         <div>
-          {coffees && coffees.map((coffee) => <CoffeeCard key={coffee.id} />)}
+          {coffees &&
+            coffees.map((coffee) => (
+              <CoffeeCard key={coffee.id} coffee={coffee} />
+            ))}
         </div>
       </CoffeeList>
     </div>
