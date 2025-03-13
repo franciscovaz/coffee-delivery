@@ -1,6 +1,6 @@
 import { createContext, ReactNode } from 'react'
 import { OrderInfo } from '../pages/Cart'
-import { Item, Order } from '../store/cart/reducers'
+import { Item, Order } from '../store/cart/reducer'
 
 interface CartContextType {
   cart: Item[]
