@@ -1,54 +1,72 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">
+  <img alt="Logo" src="./src/assets/coffee-delivery-logo.svg" width="50px">
+</h1>
 
-Currently, two official plugins are available:
+<h3 align="center">
+  Vite - React - TypeScript
+</h3>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-## Expanding the ESLint configuration
+</br>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 💇🏻‍♂️ About the project
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+This is the frontend to a webapp with Vite and React for a coffee delivery shop.  
+
+<br />
+
+## 📸 Preview
+
+![image](https://github.com/user-attachments/assets/839793e0-ff99-4a71-be65-880b1acff841)
+![image](https://github.com/user-attachments/assets/65454dc6-44cb-45e0-9151-89ff1b33b697)
+![image](https://github.com/user-attachments/assets/45d37295-0278-4288-8d06-c949652f4e23)
+
+## 🚀 Technologies
+
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled-components](https://styled-components.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
+- [React Hook Form](https://www.react-hook-form.com/)
+- [Zod (Forms validations)](https://zod.dev/)
+- [@hookform/resolvers (integrate react hook form with validation libs)](https://www.npmjs.com/package/@hookform/resolvers)
+- [React Router DOM](https://www.npmjs.com/package/react-router-dom)
+- [React Context](https://react.dev/reference/react/useContext)
+- [Reducers](https://react.dev/reference/react/useReducer)
+- [Immer](https://immerjs.github.io/immer/)
+- [Vite](https://vite.dev/)
+- [Eslint](https://eslint.org/)
+
+## 💻 Getting started
+
+**Clone the project and access the folder**
+
+```bash
+$ git clone https://github.com/franciscovaz/coffee-delivery.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+$ cd coffee-delivery
 ```
+
+**Follow the steps below**
+
+```bash
+# Install the dependencies
+$ npm install
+
+# Start the client
+$ num run dev
+```
+
+---
+
+Made with 💜 by Francisco Vaz 👋 [See my LinkedIn](https://www.linkedin.com/in/francisco-vaz/)
