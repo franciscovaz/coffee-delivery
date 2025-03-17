@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import { OrderInfo } from '../pages/Cart'
-import { Item, Order, CartReducer } from '../store/cart/reducer'
+import { Item, Order, cartReducer } from '../store/cart/reducer'
 import { useNavigate } from 'react-router-dom'
 import {
   addItemAction,
@@ -28,7 +28,7 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(
-    CartReducer,
+    cartReducer,
     {
       cart: [],
       orders: [],

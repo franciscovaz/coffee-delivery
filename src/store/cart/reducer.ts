@@ -17,7 +17,7 @@ interface CartState {
   orders: Order[]
 }
 
-export function CartReducer(state: CartState, action: any): CartState {
+export function cartReducer(state: CartState, action: any): CartState {
   switch (action.type) {
     case ActionTypes.ADD_ITEM:
       return produce(state, (draft) => {
