@@ -29,6 +29,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { TextInput } from '../../components/Form/TextInput'
 import { Radio } from '../../components/Form/Radio'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useCart } from '../../hooks/useCart'
+import { coffees } from '../../../mock-data.json'
 
 type FormInputs = {
   postalCode: number
@@ -57,20 +59,30 @@ export type OrderInfo = z.infer<typeof newOrder>
 const shippingPrice = 3.5
 
 export function Cart() {
-  const coffeesInCart = [
-    {
-      id: '0',
-      title: 'Traditional Espresso',
-      description:
-        'The traditional coffee made with hot water and ground beans',
-      tags: ['traditional'],
-      price: 9.9,
-      image: '/images/coffees/expresso.png',
-      quantity: 2,
-    },
-  ]
+  const {
+    cart,
+    checkout,
+    incrementItemQuantity,
+    decrementItemQuantity,
+    removeItem,
+  } = useCart()
 
-  const totalItemsPrice = 35.5
+  const coffeesInCart = cart.map((item) => {
+    const coffeeInfo = coffees.find((coffee) => coffee.id === item.id)
+
+    if (!coffeeInfo) {
+      throw new Error('Invalid coffee.')
+    }
+
+    return {
+      ...coffeeInfo,
+      quantity: item.quantity,
+    }
+  })
+
+  const totalItemsPrice = coffeesInCart.reduce((previousValue, currentItem) => {
+    return (previousValue += currentItem.price * currentItem.quantity)
+  }, 0)
 
   const {
     register,
@@ -84,23 +96,23 @@ export function Cart() {
   const selectedPaymentMethod = watch('paymentMethod')
 
   function handleItemIncrement(itemId: string) {
-    //incrementItemQuantity(itemId)
+    incrementItemQuantity(itemId)
   }
 
   function handleItemDecrement(itemId: string) {
-    //decrementItemQuantity(itemId)
+    decrementItemQuantity(itemId)
   }
 
   function handleItemRemove(itemId: string) {
-    //removeItem(itemId)
+    removeItem(itemId)
   }
 
   const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
-    /* if (cart.length === 0) {
-          return alert('É preciso ter pelo menos um item no carrinho')
-        }
-    
-        checkout(data) */
+    if (cart.length === 0) {
+      return alert('Do you need at least one item in the cart to checkout.')
+    }
+
+    checkout(data)
   }
 
   return (
