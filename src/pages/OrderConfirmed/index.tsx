@@ -1,29 +1,23 @@
 import { MapPin, Timer, CurrencyEur } from 'phosphor-react'
 import { Container, Order, Heading, InfoContent, Info } from './styles'
 import { useTheme } from 'styled-components'
+import { useParams } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export function OrderConfirmed() {
   const theme = useTheme()
 
-  const paymentMethod: { [key: string]: string } = {
+  const { orders } = useCart()
+  const { orderId } = useParams()
+  const orderInfo = orders.find((order) => order.id === Number(orderId))
+  const paymentMethod = {
     credit: 'Credit card',
     debit: 'Debit card',
     cash: 'Cash',
   }
 
-  const orderInfo = {
-    id: 1,
-    street: 'Rua das flores',
-    number: 33,
-    neighborhood: 'Gafanha de Aquém',
-    city: 'Ilhavo',
-    paymentMethod: 'cash',
-    items: [
-      {
-        id: '1',
-        quantity: 1,
-      },
-    ],
+  if (!orderInfo?.id) {
+    return null
   }
 
   return (
